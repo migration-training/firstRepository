@@ -15,7 +15,7 @@ jobs:
           else
             echo "TEST_1 Not Matched"
           fi
-          if [ "${{ secrets.TEST_HIDDEN }}" == "testvalue1" ]; then
+          if [ "${{ secrets.TEST_HIDDEN }}" == "test_hidden" ]; then
             echo "TEST_HIDDEN Matched"
           else
             echo "TEST_HIDDEN Not Matched"
