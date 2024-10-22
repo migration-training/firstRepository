@@ -1,0 +1,27 @@
+name: Check Repository Secret
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  check-secrets:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check if repository secret matches
+        run: |
+          if [ "${{ secrets.TEST_1 }}" == "testvalue1" ]; then
+            echo "TEST_1 Matched"
+          else
+            echo "TEST_1 Not Matched"
+          fi
+          if [ "${{ secrets.TEST_HIDDEN }}" == "testvalue1" ]; then
+            echo "TEST_HIDDEN Matched"
+          else
+            echo "TEST_HIDDEN Not Matched"
+          fi
+          if [ "${{ secrets.ARTIFACTORY_API_TOKEN_SECRET }}" == "eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiI0ZGNaV055cldhWm56OUJub0I5V18xZUkwbGJ1dXVJLTItYU9KUW8tdlg4In0.eyJzdWIiOiJqZi1hcnRpZmFjdG9yeUBiYjU5MmZjNy1iNTU0LTQzZGQtYTIxYi1hYmVkNmFjMmMzYmJcL3VzZXJzXC9naXRsYWItZ2FyYWdlLWRlcGxveSIsInNjcCI6Im1lbWJlci1vZi1ncm91cHM6Z2FyYWdlLWRlcGxveSBhcGk6KiIsImF1ZCI6ImpmLWFydGlmYWN0b3J5QGJiNTkyZmM3LWI1NTQtNDNkZC1hMjFiLWFiZWQ2YWMyYzNiYiIsImlzcyI6ImpmLWFydGlmYWN0b3J5QGJiNTkyZmM3LWI1NTQtNDNkZC1hMjFiLWFiZWQ2YWMyYzNiYiIsImlhdCI6MTU5MTA2MzAyNCwianRpIjoiYzEzZWQ2ZmYtYTgwYS00NDdhLTkwZTItNGM3ODJiZjhlYzg0In0.O_Cn7H_gLK9IhWa-pSOEbnu6RUezGuG872P6qV8HMeSb8F7WzuOIb4LVDFw_TMzjyiRLQk8in_VdSVvuh9G_S85Ywy1j5qdVVz4W20X5n5kK6BsQP6vhu1iKPYyXjHpURVDQ0b50lT4jUECgGPVTMNoZGu9lUsrCuQK6CCJL8kbEft89L2bsNLPaAf1p6J5dx5DTNb7_gnJpyel9JpbRf9PU2stuQtv6gA_frd-Wd6Hbjo90Uro2RJsT2_2c4JYq2HaJeqeeYvAS7HxVsXc8J9OVPgNFeIZYBk4__ivBzJjn7ytH6dsM2-8OFeCnAUdO15_81rT0PWVbGX7b6ZExMQ" ]; then
+            echo "ARTIFACTORY_API_TOKEN_SECRET Matched"
+          else
+            echo "ARTIFACTORY_API_TOKEN_SECRET Not Matched"
+          fi
